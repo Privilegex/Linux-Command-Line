@@ -1,0 +1,188 @@
+
+
+
+		RNA-seq Analysis
+
+1. RNA isolation in two different types (wild and cultivar) cardamon.
+2. Sequencing by Ion Torrent platform
+
+output:- transcriptomic reads of both cultivar and WT.
+3. Quality checking by using FASTQC.
+4. Performed filtering by using fastx toolkit and adaptor removal by cutadapt.
+
+ Command on terminal:
+
+cutadapt -a ATGC -o trimmed.fq  011.fq
+or
+cutadapt -a adaptor sequence -o output filename input filename.
+
+fastx_collapser -Q33  -i 011.fq -o colapsed011.fq
+same steps were performed for the cultivar type also.
+
+5. De-novo assembly by using trinity.
+Assembeled both WT 
+
+NGS data Analysis :
+
+Mapping 
+
+
+pwd 
+ 1860  gunzip SRR1523616.fastq.gz 
+ 1861  wget http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip 
+ 1862  ls 
+ 1863  unzip fastqc_v0.11.5.zip 
+ 1864  ls 
+ 1865  chmod FastQC/ 
+ 1866  cd FastQC/ 
+ 1867  ls -l 
+ 1868  cd .. 
+ 1869  chmod 777 FastQC/ 
+ 1870  ls -l 
+ 1871  sudo apt -get install FastQc 
+ 1872  sudo apt -get install fastqc 
+ 1873  sudo apt-get install fastqc 
+ 1874  mkdir NGS 
+ 1875  ls 
+ 1876  fastqc 
+ 1877  bowtie 
+ 1878  samtools 
+ 1879  velvet 
+ 1880  ./bashrc 
+ 1881  ./ bashrc 
+ 1882  vi ./bashrc 
+ 1883  history 
+ 1884  R 
+ 1885  cd Desktop/ 
+ 1886  cd NGS/software/ 
+ 1887  l 
+ 1888  cd FastQC/ 
+ 1889  l 
+ 1890  chmod +x fastqc 
+ 1891  fastqc 
+ 1892  cd Desktop/NGS/software/fastx/bin/ 
+ 1893  chmod +x fast* 
+ 1894  l 
+ 1895  cd Desktop/NGS/software/bowtie-1.1.2/ 
+ 1896  l 
+ 1897  chmod +x bowtie 
+ 1898  l 
+ 1899  chmod +x bowtie* 
+ 1900  history 
+ 1901  history 
+ 1902  fastqc 
+ 1903  cd Desktop/NGS/ 
+ 1904  fastqc 
+ 1905  ls 
+ 1906  cd samples/ 
+ 1907  fastqc 
+ 1908  fastqc ecoli_new_1.fastq 
+ 1909  fastqc ecoli_new_2.fastq 
+ 1910  ls 
+ 1911  fastx 
+ 1912  cd 
+ 1913  cd Desktop/NGS/software/fastx/bin/fastx_trimmer -Q 33 -f 10 -1 90 -i ecoli_new_1.fastq -o \ ecoli_new_trimmed1.fastq 
+ 1914  cd Desktop/NGS/ 
+ 1915  ls 
+ 1916  cd samples/ 
+ 1917  ls 
+ 1918  ~/Desktop/NGS/software/fastx/bin/fastx_trimmer -Q 33 -f 10 -1 90 -i ecoli_new_1.fastq -o \ ecoli_new_trimmed1.fastq 
+ 1919  ~/Desktop/NGS/software/fastx/bin/fastx_trimmer -Q 33 -f 10 
+ 1920  ~/Desktop/NGS/software/fastx/bin/fastx_trimmer -Q 33 -f 10 -l 90 -i ecoli_new_1.fastq -o \ ecoli_new_trimmed1.fastq 
+ 1921  ~/Desktop/NGS/software/fastx/bin/fastx_trimmer -Q 33 -f 10 -l 90 -i ecoli_new_2.fastq -o \ ecoli_new_trimmed2.fastq 
+ 1922  fastqc 
+ 1923  history 
+ 1924  fastqc ecoli_new_trimmed1.fastq 
+ 1925  ls 
+ 1926  fastqc ecoli_new_trimmed1.fastq 
+ 1927  cd Desktop/NGS/samples/ 
+ 1928  ls 
+ 1929  bowtie -build ecolik12.fasta ecolik2 
+ 1930  bowtie-build ecolik12.fasta ecolik12 
+ 1931  ls 
+ 1932  samtools 
+ 1933  history 
+ 1934  cd Desktop/ 
+ 1935  cd NGS_RNA 
+ 1936  cd trinityrnaseq-2.0.6 
+ 1937  make 
+ 1938  ./Trinity 
+ 1939  cd Desktop/NGS/samples/bowtie -s ecolik12 -1 ecoli_new_trimmed1.fastq -2 ecoli_new_trimmed2.fastq ecoli_new.sam 
+ 1940  cd Desktop/ 
+ 1941  cd NGS 
+ 1942  cd samples/ 
+ 1943  bowtie -s ecolik12 -1 ecoli_new_trimmed1.fastq -2 ecoli_new_trimmed2.fastq ecoli_new.sam 
+ 1944  ls 
+ 1945  ls -l 
+ 1946  bowtie -s ecolik12 -1 ecoli_new_trimmed1.fastq -2 ecoli_new_trimmed2.fastq ecoli_new.sam 
+ 1947  bowtie -s ecolik12 -1  ecoli_new_trimmed1.fastq -2  ecoli_new_trimmed2.fastq ecoli_new.sam 
+ 1948  bowtie -S ecolik12 -1 ecoli_new_trimmed1.fastq -2 ecoli_new_trimmed2.fastq ecoli_new.sam 
+ 1949  ls 
+ 1950  bowtie -S ecolik12 -1 ecoli_new_trimmed1.fastq -2 ecoli_new_trimmed2.fastq ecoli_new.sam 
+ 1951  bowtie -S -X1000 ecolik12 -1 ecoli_new_trimmed1.fastq -2 ecoli_new_trimmed2.fastq ecoli_new.sam 
+ 1952  head -n 10 ecoli_new.sam 
+ 1953  samtools 
+ 1954  samtools faidx 
+ 1955  samtools faidx ecolik12.fasta 
+ 1956  samtools view 
+ 1957  samtools sort 
+ 1958  samtools view -b -S ecoli_new.sam | samtoolssort - ecoli_new_sorted.bam 
+ 1959  samtools view -b -S ecoli_new.sam | samtools sort - ecoli_new_sorted.bam 
+ 1960  samtools mpileup 
+ 1961  samtools mpileup -D ecoli_new_sorted.bam.bam -f ecolik12.fasta > ecoli_new.vcf 
+ 1962  ls 
+ 1963  head -n 10 ecoli_new.vcf 
+ 1964  history 
+ 1965  trinity 
+ 1966  cd 
+ 1967  cd Desktop/NGS_RNA/ 
+ 1968  trinity 
+ 1969  trinityrnaseq-2.0.6/ 
+ 1970  velvet 
+ 1971  cd 
+ 1972  cd Desktop/NGS/samples/ 
+ 1973  velvet 
+ 1974  cd .. 
+ 1975  cd software/ 
+ 1976  velvet 
+ 1977  cd .. 
+ 1978  cd software/ 
+ 1979  chmod +x velvet_1.2.10/* 
+ 1980  cd .. 
+ 1981  cd samples/ 
+ 1982  ~/Desktop/NGS/software/velvet_1.2.10/velveth run_49 49 -fastq -shortPaired -seperate ecoli_new_1.fastq 
+ 1983  ~/Desktop/NGS/software/velvet_1.2.10/velveth run_49 49 -fastq -shortPaired -separate ecoli_new_1.fastq 
+ 1984  ~/Desktop/NGS/software/velvet_1.2.10/velveth run_49 49 -fastq -shortPaired -separate ecoli_new_1.fastq ecoli_new_2.fastq 
+ 1985  ~/Desktop/NGS/software/velvet_1.2.10/velvetg run_49/ -ins_length 300 
+ 1986  ~/Desktop/NGS/software/velvet_1.2.10/velveth run_51 51 -fastq -shortPaired -separate ecoli_new_1.fastq ecoli_new_2.fastq 
+ 1987  ~/Desktop/NGS/software/velvet_1.2.10/velvetg run_51/ -ins_length 300 
+ 1988  ~/Desktop/NGS/software/velvet_1.2.10/velveth run_67 67 -fastq -shortPaired -separate ecoli_new_1.fastq ecoli_new_2.fastq 
+ 1989  ~/Desktop/NGS/software/velvet_1.2.10/velveth run_63 63 -fastq -shortPaired -separate ecoli_new_1.fastq ecoli_new_2.fastq 
+ 1990  ~/Desktop/NGS/software/velvet_1.2.10/velveth run_53 53 -fastq -shortPaired -separate ecoli_new_1.fastq ecoli_new_2.fastq 
+ 1991  ~/Desktop/NGS/software/velvet_1.2.10/velvetg run_53/ -ins_length 300 
+ 1992  ~/Desktop/NGS/software/velvet_1.2.10/velveth run_61 61 -fastq -shortPaired -separate ecoli_new_1.fastq ecoli_new_2.fastq 
+ 1993  ~/Desktop/NGS/software/velvet_1.2.10/velvetg run_61/ -ins_length 300 
+ 1994  ssh 
+ 1995  ssh jinu@14.139.172.168 -p 9922 
+ 1996  cd Desktop/NGS_RNA/ 
+ 1997  sudo apt-get install ncbi-blast+ 
+ 1998  blast 
+ 1999  blastx 
+ 2000  blast+ 
+ 2001  blastdb 
+ 2002  blast+ 
+ 2003  sudo apt-get install ncbi-blast+ 
+ 2004  blast 
+ 2005  blast+ 
+ 2006  blastx 
+ 2007  blast --help 
+ 2008  cd Desktop/NGS_RNA/ 
+ 2009  makeblastdb -in uni.fasta -dbtype prot -out uniprot_database 
+ 2010  makeblastdb -in uniprot_sprot.fasta -dbtype prot -out uniprot_database 
+ 2011  blastx -query Trinity.fasta -db uniprot_database -out uniblastx -evalue .0001 -outfmt 6 
+ 2012  ssh jinu@14.139.172.168 - p 9222 
+ 2013  cd 
+ 2014  ssh jinu@14.139.172.168 - p 9222 
+ 2015  ssh jinu@14.139.172.168 - P 9222 
+ 2016  history 
+dcb@dcb-pc22:~$ 
